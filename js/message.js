@@ -29,9 +29,35 @@ text.addEventListener("keydown", (e)=>{
 function sendMessage(){
     
     var newMessage = document.createElement("div");
-    newMessage.innerHTML = file.value.replace(/.*[\/\\]/, '') + " " + text.value;
+    var newMessageBody = document.createElement("div");
+    var newFile = document.createElement("div");
 
-    if(newMessage.innerHTML === " "){
+    newMessage.className = "message";
+    newMessageBody.className = "text";
+    newFile.className = "doc";
+
+    newMessageBody.innerHTML = text.value;
+    newFile.innerHTML = file.value.replace(/.*[\/\\]/, '');
+
+    
+
+    if(newFile.innerHTML === ""){
+        
+    }
+    else{
+        newMessage.appendChild(newFile);
+        
+    }
+
+    if(newMessageBody.innerHTML === ""){
+        
+    }
+    else{
+        newMessage.appendChild(newMessageBody);
+    }
+    
+
+    if(newMessageBody.innerHTML === "" && newFile.innerHTML === ""){
     }
     else{
         messages.appendChild(newMessage);
@@ -40,15 +66,23 @@ function sendMessage(){
 
     text.value = "";
     file.value="";
+
+
+    var elem = document.getElementById('content');
+    elem.scrollTop = elem.scrollHeight;
 }
 
 function dummyMessage(){
     
     var newDUM = document.createElement("div");
-    newDUM.className = "recieved";
+    newDUM.className = "recieved message";
     newDUM.innerHTML = "dummy message";
 
     messages.appendChild(newDUM);
+
+
+    var elem = document.getElementById('content');
+    elem.scrollTop = elem.scrollHeight;
     
 }
 

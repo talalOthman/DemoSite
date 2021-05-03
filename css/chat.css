@@ -1,29 +1,40 @@
-body{
-    overflow: hidden;
-}
-
-#content{
-    overflow: hidden;
-
-}
-
 
 .chatBox{
+    position: relative;
     max-height: 85% !important;
     height: 85% !important; 
-    width: 80%;
-    overflow: scroll;
+
+    background-color: antiquewhite;
 }
 
-.chatBox div{
+.message{
+    display:flex;
+    flex-direction: row;
     max-width: 50%;
     padding: 5px;
     margin: 15px;
     background-color: grey;
     color:white;
+    text-decoration: none;
+}
+
+.doc{
+    flex:1;
+    background-color: azure;
+    color: black;
+}
+
+.text{
+    flex:6;
+    padding-left: 10px;
 }
 
 .recieved{
     background-color: darkgrey !important;
     margin-left: 45% !important;
+}
+
+.input-group{
+    position: relative;
+    top:3%;
 }

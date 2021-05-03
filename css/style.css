@@ -8343,10 +8343,12 @@ a[data-toggle="collapse"] {
   background: #3b4ec6; }
 
 
-  #image{
+ 
+
+  img{
+    border-radius: 50%;
     height: 300px;
-    width: 300px;
-    overflow: hidden;
+    width: 250px;
   }
 
 

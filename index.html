@@ -2,41 +2,13 @@
      <head>
          <meta charset="utf-8" />
          <title>Webcam</title>
-         <style>
-             #videoElement {
-               border: 3px solid black;
-               background: grey;
-               width: 400px;
-               height: 300px
-              }
-
-              .container{
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-              }
-         </style>
+         <link rel="stylesheet" href="style.css">
      </head>
      <body>
            <div class="container">
             <video autoplay="true" id="videoElement"></video>
            </div>
 
-           <script type="text/javascript">
-                var video = document.querySelector("#videoElement");
-                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUsermedia 
-                    || navigator.mozGetUserMedia || navigato.msGetUserMedia || navigator.oGetUserMedia;
-
-                    if(navigator.getUserMedia){
-                      navigator.getUserMedia({video:true}, handleVideo, videoError)      
-                    }
-
-                    function handleVideo(stream){
-                    video.srcObject = stream;
-                    video.play();
-                    }
-
-                    function videoError(e){}
-           </script> 
+           <script src="script.js"></script>
      </body>
 </html>

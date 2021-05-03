@@ -1,0 +1,12 @@
+#videoElement {
+    border: 3px solid black;
+    background: grey;
+    width: 400px;
+    height: 300px
+   }
+
+   .container{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }

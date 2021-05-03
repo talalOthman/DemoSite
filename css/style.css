@@ -8341,3 +8341,25 @@ a[data-toggle="collapse"] {
 
 .subscribe-form .form-control {
   background: #3b4ec6; }
+
+
+  #image{
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+  }
+
+
+  @media only screen and (min-width: 601px) {
+
+    .cardContainer{
+      display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+
+    .card{
+      margin: 2%;
+    }
+
+  }

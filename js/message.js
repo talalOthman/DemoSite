@@ -3,12 +3,12 @@ var text = document.getElementById("message");
 var button = document.getElementById("submit");
 
 button.addEventListener("click", ()=>{
-    sendMessage;
+    sendMessage();
 });
 
 text.addEventListener("keydown", (e)=>{
     if(e.code==="Enter"){
-        sendMessage;
+        sendMessage();
     }
 })
 

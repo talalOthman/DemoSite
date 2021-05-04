@@ -44,16 +44,33 @@
          <!-- Page Content  -->
          
       <div id="content" class="p-4 p-md-5 pt-5">
+
+        <div class="topContainer">
           
-        <h2 class="mb-4">Video</h2>
+        <a class="navbar-brand" href="#"><h2 class="mb-4">Video</h2></a>
+
+        <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+          </a>
+        
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" id = "disconnect" href="#">Disconnect</a>
+            <a class="dropdown-item" id = "connect" href="#">Connect</a>
+
+          </div>
+        </div>
+      </div>
+
+
 
         <div class="container">
             <video autoplay="true" id="videoElement"></video>
             <div class="buttons">
-            <button type="button" class="btn btn-danger Disconnect" id="disconnect"><i class="fa fa-ban" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-secondary " id = "mute"><i class="fa fa-microphone-slash" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-secondary" onclick="window.location.href='../chatPage/chat.html'"><i class="fa fa-comment-o" aria-hidden="true"></i></button>
-           <button type="button" class="btn btn-Success connect" id="connect"><i class="fa fa-phone" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-danger Disconnect videoButtons" id="disconnect"><i class="fa fa-ban" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-secondary videoButtons" id = "mute"><i class="fa fa-microphone-slash" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-secondary videoButtons" onclick="window.location.href='../chatPage/chat.html'"><i class="fa fa-comment-o" aria-hidden="true"></i></button>
+           <button type="button" class="btn btn-Success connect videoButtons" id="connect"><i class="fa fa-phone" aria-hidden="true"></i></button>
             </div>
            </div>
         

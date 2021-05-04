@@ -5,6 +5,32 @@ var file = document.getElementById("file");
 var fileButton = document.getElementById("fileButton");
 var dummy = document.getElementById("dummy");
 
+var group = document.getElementById("groupName");
+var groupToggle1 = document.getElementById("group1");
+var groupToggle2 = document.getElementById("group2");
+var groupToggle3 = document.getElementById("group3");
+var groupToggle4 = document.getElementById("group4");
+
+groupToggle1.addEventListener('click', ()=>{
+    group.innerHTML = groupToggle1.innerHTML;
+    messages.querySelectorAll('*').forEach(n => n.remove());
+});
+
+groupToggle2.addEventListener('click', ()=>{
+    group.innerHTML = groupToggle2.innerHTML;
+    messages.querySelectorAll('*').forEach(n => n.remove());
+});
+
+groupToggle3.addEventListener('click', ()=>{
+    group.innerHTML = groupToggle3.innerHTML;
+    messages.querySelectorAll('*').forEach(n => n.remove());
+});
+
+groupToggle4.addEventListener('click', ()=>{
+    group.innerHTML = groupToggle4.innerHTML;
+    messages.querySelectorAll('*').forEach(n => n.remove());
+});
+
 
 fileButton.addEventListener('click', openDialog);
 

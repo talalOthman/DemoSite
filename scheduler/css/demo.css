@@ -1,0 +1,10 @@
+body {
+
+color: #40bae0;
+text-shadow: 0px 1px 1px #adadad;
+filter: dropshadow(color=#1b1b1b, offx=0, offy=1);
+}
+h1 { margin-top:150px; text-align:center;
+
+
+}

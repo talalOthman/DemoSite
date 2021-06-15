@@ -7,7 +7,7 @@
 		
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
          <link rel="stylesheet" href="../css/style.css">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+         
          <link rel="stylesheet" href="camera.css">
      </head>
      <body>
@@ -109,6 +109,39 @@
 </div>
 
 
+<div class="modal fade" id="callHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Call History</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--Call history data will be here-->
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Caller Name</th>
+              <th scope="col">Call Duration</th>
+            </tr>
+          </thead>
+          <tbody id = "call_history">
+
+          </tbody>
+        </table>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
         
          <!-- Page Content  -->
@@ -132,6 +165,7 @@
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter">Status</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cameraSettings">Camera Settings</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#microphoneSettings">Microphone Settings</a>
+            <a class="dropdown-item" id="view_call_history" href="#" data-toggle="modal" data-target="#callHistory">Call History</a>
 
           </div>
         </div>
@@ -159,13 +193,44 @@
 
 		</div>
         
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $('#view_call_history').on('click' , function(){
+
+          $.ajax({
+                  url:"http://localhost:3000/videoPage/get_call_history.php",
+                  method:"GET",
+                  encode: true,
+                  processData: false,
+                  headers: {
+                      'Content-Type': "application/json"
+                  },
+                  success: (resultsJSON) => {
+
+                  $('#call_history').html('');
+
+                  if(Array.isArray(resultsJSON[0].message)){
+                      resultsJSON[0].message.map(user => {
+                          $('#call_history').append('<tr> <td>' +user.caller_name + '</td> <td>' + user.call_duration + '</td> </tr>');
+                      })
+                  }
+                  else{
+                      $('#call_history').html(resultsJSON[0].message);
+                  }
+
+                  },
+                  error: err => console.error(err)
+              })
+      });
+  </script>
         
     
 
-           <script src="../js/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
             <script src="../js/popper.js"></script>
             <script src="../js/bootstrap.min.js"></script>
             <script src="../js/main.js"></script>
            <script src="script.js"></script>
+           
      </body>
 </html>

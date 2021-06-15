@@ -65,6 +65,10 @@
     font-weight: bold;
 }
 
+.form{
+    border: 0.25px solid black;
+}
+
 
 
 @keyframes gradient {

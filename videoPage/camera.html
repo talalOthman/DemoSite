@@ -46,8 +46,8 @@
 
 
     <!--modal-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="status" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -57,7 +57,17 @@
             </button>
           </div>
           <div class="modal-body">
-            Streaming equipments are on optimal condition!.
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Device</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody id="statusList">
+                <!--Status data will be here-->
+              </tbody>
+            </table>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -69,7 +79,7 @@
 
 
 
-    <div class="modal fade" id="cameraSettings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <div class="modal fade" id="add_contacts" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -80,10 +90,25 @@
             </button>
           </div>
           <div class="modal-body">
-            Settings of camera.
+
+
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Full Name</label>
+                <input type="text" class="form-control form" id="full_name" placeholder="Enter Full Name" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Location</label>
+                <input type="text" class="form-control form" id="location" placeholder="Enter location" required>
+              </div>
+
+
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" id="submitForm">Add Contact</button>
+            </form>
 
           </div>
         </div>
@@ -103,7 +128,6 @@
             </button>
           </div>
           <div class="modal-body">
-            <!--Contacts data will be here-->
             <table class="table">
               <thead>
                 <tr>
@@ -112,7 +136,7 @@
                 </tr>
               </thead>
               <tbody id="contactsList">
-
+                <!--Contacts data will be here-->
               </tbody>
             </table>
           </div>
@@ -136,7 +160,6 @@
             </button>
           </div>
           <div class="modal-body">
-            <!--Call history data will be here-->
             <table class="table">
               <thead>
                 <tr>
@@ -145,7 +168,7 @@
                 </tr>
               </thead>
               <tbody id="call_history">
-
+                <!--Call history data will be here-->
               </tbody>
             </table>
 
@@ -182,8 +205,9 @@
               <i class="fa fa-cog" aria-hidden="true"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter">Status</a>
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cameraSettings">Camera Settings</a>
+              <a class="dropdown-item" id="view_status" href="#" data-toggle="modal" data-target="#status">Status</a>
+              <a class="dropdown-item" id="view_add_contacts" href="#" data-toggle="modal"
+                data-target="#add_contacts">Add Contacts</a>
               <a class="dropdown-item" id="view_contacts" href="#" data-toggle="modal"
                 data-target="#contacts">Contacts</a>
               <a class="dropdown-item" id="view_call_history" href="#" data-toggle="modal"
@@ -222,6 +246,34 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
+    // add contact
+    $('#submitForm').on('click', function () {
+
+      var markers = {
+        "full_name": $('#full_name').val(),
+        "location": $('#location').val()
+      };
+
+      $.ajax({
+        url: "http://localhost:3000/videoPage/create_contact.php",
+        method: "POST",
+        data: JSON.stringify(markers),
+        dataType: "json",
+        encode: true,
+        processData: false,
+        headers: {
+          'Content-Type': "application/json"
+        },
+        success: (resultsJSON) => {
+
+          $('#result').html(resultsJSON[0].message);
+
+        },
+        error: err => console.error(err)
+      })
+    });
+
+
     //view call history
     $('#view_call_history').on('click', function () {
 
@@ -273,6 +325,34 @@
             })
           } else {
             $('#contactsList').html(resultsJSON[0].message);
+          }
+
+        },
+        error: err => console.error(err)
+      })
+    });
+    //view status
+    $('#view_status').on('click', function () {
+
+      $.ajax({
+        url: "http://localhost:3000/videoPage/get_status.php",
+        method: "GET",
+        encode: true,
+        processData: false,
+        headers: {
+          'Content-Type': "application/json"
+        },
+        success: (resultsJSON) => {
+
+          $('#statusList').html('');
+
+          if (Array.isArray(resultsJSON[0].message)) {
+            resultsJSON[0].message.map(user => {
+              $('#statusList').append('<tr> <td>' + user.device_name + '</td> <td>' + user
+                .device_status + '</td> </tr>');
+            })
+          } else {
+            $('#statusList').html(resultsJSON[0].message);
           }
 
         },

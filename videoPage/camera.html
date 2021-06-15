@@ -1,236 +1,294 @@
 <html>
-     <head>
-         <meta charset="utf-8" />
-         <title>Video Conferencing</title>
-         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-         <link rel="stylesheet" href="../css/style.css">
-         
-         <link rel="stylesheet" href="camera.css">
-     </head>
-     <body>
-        <div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
-				<div class="custom-menu">
-					<button type="button" id="sidebarCollapse" class="btn btn-primary">
-	          <i class="fa fa-bars"></i>
-	          <span class="sr-only">Toggle Menu</span>
-	        </button>
-        </div>
-				<div class="p-4">
-		  		<h1><a href="../index.html" class="logo">NG++ <span>Not a normal group</span></a></h1>
-	        <ul class="list-unstyled components mb-5">
-	          <li class="active">
-	            <a href="../index.html"><span class="fa fa-home mr-3"></span> Home</a>
-	          </li>
-	          <li>
-	              <a href="camera.html"><span class="fa fa-video-camera mr-3"></span> Video Conferencing</a>
-	          </li>
-	          <li>
-              <a href="../chatPage/chat.html"><span class="fa fa-comments mr-3"></span> Chat</a>
-	          </li>
-	          <li>
-              <a href="../scheduler/calendar.html"><span class="fa fa-calendar mr-3"></span> Schedule</a>
-	          </li>
-	          
-	        </ul>
 
-	        <div class="mb-5">
-					
-    	</nav>
-      
-      
+<head>
+  <meta charset="utf-8" />
+  <title>Video Conferencing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-      <!--modal-->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Status</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <link rel="stylesheet" href="camera.css">
+</head>
+
+<body>
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+          <i class="fa fa-bars"></i>
+          <span class="sr-only">Toggle Menu</span>
         </button>
       </div>
-      <div class="modal-body">
-        Streaming equipments are on optimal condition!.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="p-4">
+        <h1><a href="../index.html" class="logo">NG++ <span>Not a normal group</span></a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a href="../index.html"><span class="fa fa-home mr-3"></span> Home</a>
+          </li>
+          <li>
+            <a href="camera.html"><span class="fa fa-video-camera mr-3"></span> Video Conferencing</a>
+          </li>
+          <li>
+            <a href="../chatPage/chat.html"><span class="fa fa-comments mr-3"></span> Chat</a>
+          </li>
+          <li>
+            <a href="../scheduler/calendar.html"><span class="fa fa-calendar mr-3"></span> Schedule</a>
+          </li>
+
+        </ul>
+
+        <div class="mb-5">
+
+    </nav>
 
 
 
-<div class="modal fade" id="cameraSettings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Camera Settings</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Settings of camera.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="modal fade" id="microphoneSettings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Camera Settings</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Settings of microphone.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="modal fade" id="callHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Call History</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!--Call history data will be here-->
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Caller Name</th>
-              <th scope="col">Call Duration</th>
-            </tr>
-          </thead>
-          <tbody id = "call_history">
-
-          </tbody>
-        </table>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-        
-         <!-- Page Content  -->
-         
-      <div id="content" class="p-4 p-md-5 pt-5">
-
-        <div class="topContainer">
-          
-        <a class="navbar-brand" href="#"><h2 class="mb-4 title">Video  <span class="badge badge-danger">Live</span></h2></a>
-
-        <div class="rightSide-Container">
-          
-          
-          
-          
-        <div class="dropdown show">
-          <a class="btn btn-secondary dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-cog" aria-hidden="true"></i>
-          </a>  
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter">Status</a>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cameraSettings">Camera Settings</a>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#microphoneSettings">Microphone Settings</a>
-            <a class="dropdown-item" id="view_call_history" href="#" data-toggle="modal" data-target="#callHistory">Call History</a>
+    <!--modal-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Status</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Streaming equipments are on optimal condition!.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 
           </div>
         </div>
       </div>
+    </div>
+
+
+
+    <div class="modal fade" id="cameraSettings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Camera Settings</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Settings of camera.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="modal fade" id="contacts" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Contacts</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!--Contacts data will be here-->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Location</th>
+                </tr>
+              </thead>
+              <tbody id="contactsList">
+
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="callHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Call History</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!--Call history data will be here-->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Caller Name</th>
+                  <th scope="col">Call Duration</th>
+                </tr>
+              </thead>
+              <tbody id="call_history">
+
+              </tbody>
+            </table>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- Page Content  -->
+
+    <div id="content" class="p-4 p-md-5 pt-5">
+
+      <div class="topContainer">
+
+        <a class="navbar-brand" href="#">
+          <h2 class="mb-4 title">Video <span class="badge badge-danger">Live</span></h2>
+        </a>
+
+        <div class="rightSide-Container">
+
+
+
+
+          <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle " href="#" role="button" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter">Status</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cameraSettings">Camera Settings</a>
+              <a class="dropdown-item" id="view_contacts" href="#" data-toggle="modal"
+                data-target="#contacts">Contacts</a>
+              <a class="dropdown-item" id="view_call_history" href="#" data-toggle="modal"
+                data-target="#callHistory">Call History</a>
+
+            </div>
+          </div>
+        </div>
       </div>
 
 
 
-        <div class="container">
-            <video autoplay="true" id="videoElement"></video>
-            <div class="buttons">
-            <button type="button" class="btn btn-danger Disconnect videoButtons" id="disconnect"><i class="fa fa-ban" aria-hidden="true"></i></button>
-            
-            <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary videoButtons" id = "mute"><i class="fa fa-microphone-slash" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-secondary videoButtons" onclick="window.location.href='../chatPage/chat.html'"><i class="fa fa-comment-o" aria-hidden="true"></i></button>
-            </div>
-            
-            <button type="button" class="btn btn-Success connect videoButtons" id="connect"><i class="fa fa-phone" aria-hidden="true"></i></button>
-            </div>
-           </div>
-        
+      <div class="container">
+        <video autoplay="true" id="videoElement"></video>
+        <div class="buttons">
+          <button type="button" class="btn btn-danger Disconnect videoButtons" id="disconnect"><i class="fa fa-ban"
+              aria-hidden="true"></i></button>
+
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary videoButtons" id="mute"><i class="fa fa-microphone-slash"
+                aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-secondary videoButtons"
+              onclick="window.location.href='../chatPage/chat.html'"><i class="fa fa-comment-o"
+                aria-hidden="true"></i></button>
+          </div>
+
+          <button type="button" class="btn btn-Success connect videoButtons" id="connect"><i class="fa fa-phone"
+              aria-hidden="true"></i></button>
+        </div>
       </div>
-    
 
-		</div>
-        
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-      $('#view_call_history').on('click' , function(){
+    </div>
 
-          $.ajax({
-                  url:"http://localhost:3000/videoPage/get_call_history.php",
-                  method:"GET",
-                  encode: true,
-                  processData: false,
-                  headers: {
-                      'Content-Type': "application/json"
-                  },
-                  success: (resultsJSON) => {
 
-                  $('#call_history').html('');
+  </div>
 
-                  if(Array.isArray(resultsJSON[0].message)){
-                      resultsJSON[0].message.map(user => {
-                          $('#call_history').append('<tr> <td>' +user.caller_name + '</td> <td>' + user.call_duration + '</td> </tr>');
-                      })
-                  }
-                  else{
-                      $('#call_history').html(resultsJSON[0].message);
-                  }
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    //view call history
+    $('#view_call_history').on('click', function () {
 
-                  },
-                  error: err => console.error(err)
-              })
-      });
+      $.ajax({
+        url: "http://localhost:3000/videoPage/get_call_history.php",
+        method: "GET",
+        encode: true,
+        processData: false,
+        headers: {
+          'Content-Type': "application/json"
+        },
+        success: (resultsJSON) => {
+
+          $('#call_history').html('');
+
+          if (Array.isArray(resultsJSON[0].message)) {
+            resultsJSON[0].message.map(user => {
+              $('#call_history').append('<tr> <td>' + user.caller_name + '</td> <td>' + user
+                .call_duration + '</td> </tr>');
+            })
+          } else {
+            $('#call_history').html(resultsJSON[0].message);
+          }
+
+        },
+        error: err => console.error(err)
+      })
+    });
+
+    //view contacts
+    $('#view_contacts').on('click', function () {
+
+      $.ajax({
+        url: "http://localhost:3000/videoPage/get_contacts.php",
+        method: "GET",
+        encode: true,
+        processData: false,
+        headers: {
+          'Content-Type': "application/json"
+        },
+        success: (resultsJSON) => {
+
+          $('#contactsList').html('');
+
+          if (Array.isArray(resultsJSON[0].message)) {
+            resultsJSON[0].message.map(user => {
+              $('#contactsList').append('<tr> <td>' + user.contact_name + '</td> <td>' + user
+                .contact_location + '</td> </tr>');
+            })
+          } else {
+            $('#contactsList').html(resultsJSON[0].message);
+          }
+
+        },
+        error: err => console.error(err)
+      })
+    });
   </script>
-        
-    
 
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-            <script src="../js/popper.js"></script>
-            <script src="../js/bootstrap.min.js"></script>
-            <script src="../js/main.js"></script>
-           <script src="script.js"></script>
-           
-     </body>
+
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="../js/popper.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
 </html>

@@ -5,12 +5,11 @@ $datas = json_decode(file_get_contents("php://input"), true);
 
 $contact_name = $datas['full_name'];
 $contact_location = $datas['location'];
-$id = 7;
 
 include('db_connect.php'); 
 
-$sql = "insert into contacts (contact_id, contact_name, contact_location)".
-"values ('$id', '$contact_name', '$contact_location')";
+$sql = "insert into contacts (contact_name, contact_location)".
+"values ('$contact_name', '$contact_location')";
 
 if (mysqli_query($conn, $sql)) {
   $response[] = [

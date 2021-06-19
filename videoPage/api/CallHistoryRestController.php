@@ -22,7 +22,7 @@ URL mapping
 
 	case "single":
 
-		$callHistoryRestHandler = new CallHistoryHandler();
+		$callHistoryRestHandler = new CallHistoryRestHandler();
 		$callHistoryRestHandler->getCallHistory($_GET["id"]);
 		break;
 

@@ -68,7 +68,7 @@ class CallHistoryRestHandler extends SimpleRest {
          return $xml->asXML();
 	}
 
-	public function getStatus($id) {
+	public function getCallHistory($id) {
 
 		$call_history = new CallHistory();
 		$rawData = $call_history->getCallHistory($id);

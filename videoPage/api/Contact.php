@@ -17,9 +17,9 @@ Class Contact {
 
 	public function __construct() {
 		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "videopage";
+		$username = "omaga";
+		$password = "omar25";
+		$dbname = "VideoPage";
 
 		// Create connection
 		$this->conn = mysqli_connect($servername, $username, $password, $dbname);

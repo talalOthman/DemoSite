@@ -307,7 +307,7 @@
     $('#view_contacts').on('click', function () {
 
       $.ajax({
-        url: "https://www.normalgroup.tk/videoPage/get_contacts.php",
+        url: "http://localhost:3000/videoPage/api/RestController.php?view=allContacts",
         method: "GET",
         encode: true,
         processData: false,
@@ -318,8 +318,8 @@
 
           $('#contactsList').html('');
 
-          if (Array.isArray(resultsJSON[0].message)) {
-            resultsJSON[0].message.map(user => {
+          if (Array.isArray(resultsJSON)) {
+            resultsJSON.map(user => {
               $('#contactsList').append('<tr> <td>' + user.contact_name + '</td> <td>' + user
                 .contact_location + '</td> </tr>');
             })

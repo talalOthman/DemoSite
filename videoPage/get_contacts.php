@@ -12,16 +12,12 @@ if ($result->num_rows > 0) {
        $json[] = $row;
     }
 
-    $response[] = [
-      'status' => 'success',
-      'message' => $json,
-    ];
+    $response = $json;
   
     
     echo json_encode($response);
 } else {
   $response[] = [
-    'status' => 'success',
     'message' => '0 results',
   ];
   

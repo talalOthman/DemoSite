@@ -278,7 +278,7 @@
     $('#view_call_history').on('click', function () {
 
       $.ajax({
-        url: "https://www.normalgroup.tk/videoPage/api/CallHistoryRestController.php?view=all",
+        url: "https://www.normalgroup.tk/videoPage/get_call_history.php",
         method: "GET",
         encode: true,
         processData: false,
@@ -289,8 +289,8 @@
 
           $('#call_history').html('');
 
-          if (Array.isArray(resultsJSON)) {
-            resultsJSON.map(user => {
+          if (Array.isArray(resultsJSON[0].message)) {
+            resultsJSON[0].message.map(user => {
               $('#call_history').append('<tr> <td>' + user.caller_name + '</td> <td>' + user
                 .call_duration + '</td> </tr>');
             })

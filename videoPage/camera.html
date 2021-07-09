@@ -255,7 +255,7 @@
       };
 
       $.ajax({
-        url: "https://www.normalgroup.tk/videoPage/create_contact.php",
+        url: "api2/index.php/addContacts?name="+markers.full_name+"&location="+markers.location,
         method: "POST",
         data: JSON.stringify(markers),
         dataType: "json",
@@ -278,7 +278,7 @@
     $('#view_call_history').on('click', function () {
 
       $.ajax({
-        url: "https://www.normalgroup.tk/videoPage/get_call_history.php",
+        url: "api2/index.php/allCallHistory",
         method: "GET",
         encode: true,
         processData: false,
@@ -289,8 +289,8 @@
 
           $('#call_history').html('');
 
-          if (Array.isArray(resultsJSON[0].message)) {
-            resultsJSON[0].message.map(user => {
+          if (Array.isArray(resultsJSON)) {
+            resultsJSON.map(user => {
               $('#call_history').append('<tr> <td>' + user.caller_name + '</td> <td>' + user
                 .call_duration + '</td> </tr>');
             })
@@ -307,7 +307,7 @@
     $('#view_contacts').on('click', function () {
 
       $.ajax({
-        url: "https://www.normalgroup.tk/videoPage/api/ContactRestController.php?view=all",
+        url: "api2/index.php/allContacts",
         method: "GET",
         encode: true,
         processData: false,
@@ -335,7 +335,7 @@
     $('#view_status').on('click', function () {
 
       $.ajax({
-        url: "https://www.normalgroup.tk/videoPage/api/StatusRestController.php?view=all",
+        url: "api2/index.php/allStatus",
         method: "GET",
         encode: true,
         processData: false,

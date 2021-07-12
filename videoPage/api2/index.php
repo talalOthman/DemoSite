@@ -202,8 +202,8 @@ $app->post('/addCallHistory',function($request, $response, $args){
             // Connect
             $db = $db->connect();
             $stmt = $db->prepare($sql);
-            $stmt->bindParam(':contact_name', $caller_name);
-            $stmt->bindParam(':contact_location', $call_duration);
+            $stmt->bindParam(':caller_name', $caller_name);
+            $stmt->bindParam(':call_duration', $call_duration);
         
             $result = $stmt->execute();
             

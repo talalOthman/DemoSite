@@ -76,24 +76,14 @@
                     <div class="card" style="width: 18rem;">
                       <img class="card-img-top" src="../images/group.svg" style="height: 100px;" alt="Group image">
                       <div class="card-body">
-                        <h5 class="card-title">Group 2</h5>
-                        <p class="card-text"> Sender: this message says...</p>
+                        <h5 class="card-title" id="notifgroup">Group </h5>
+                        <p class="card-text"> <b id="notifsender">User</b>: <i id="notiftext">this message says... </i></p>
                         <a href="#" class="btn btn-dark">Go to message</a>
                       </div>
                     </div>
                   </a>
                   <a class="dropdown-item" href="#">
-                    <div class="card" style="width: 18rem;">
-                      <img class="card-img-top" src="../images/group.svg" alt="Group image">
-                      <div class="card-body">
-                        <h5 class="card-title">Group 3</h5>
-                        <p class="card-text"> Sender: this message says...</p>
-                        <a href="#" class="btn btn-dark">Go to message</a>
-                      </div>
-                    </div>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                        <a href="#" class="btn btn-outline-secondary">View all notifications...</a>
+                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-secondary">View all notifications...</button>
                   </a>
                 </div>
               </div>
@@ -103,10 +93,29 @@
 
 
         <div class="chatBox">
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">notifications</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                   <a class="navbar-brand" href="#" id="groupName">Group 1</a>
-                  <button class="btn btn-outline-secondary" style="float:right" type="button" id="dummy"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                  <button id="dummy" class="btn btn-outline-secondary" style="float:right" type="button" id="dummy"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                 </div>
               </nav>
             <br>
@@ -129,11 +138,364 @@
         
       </div>
 	</div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+//get notification data
+var notifs = [];
+var allNotifs = [];
+var count = 0;
+var currentGroup = 0;
 
-    <script src="../js/jquery.min.js"></script>
+$.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/notifications/1",
+  method: "GET",
+  encode: true,
+  processData: false,
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+
+
+    if (Array.isArray(resultsJSON)) {
+
+      resultsJSON.map(notification => {
+        notifs[count] = notification.message;
+        count++;
+      })
+    } else {
+        notifs[0] = resultsJSON.message;
+    }
+
+    console.log(resultsJSON);
+    console.log(notifs)
+
+
+    
+$.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/messages/" + notifs[0],
+  method: "GET",
+  encode: true,
+  processData: false,
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+
+    if (Array.isArray(resultsJSON[0])) {
+      
+
+      resultsJSON.map(user => {
+
+      })
+    } else {
+
+    }
+
+          $('#notifgroup').append(resultsJSON.chat);
+          $('#notifsender').append(resultsJSON.sender);
+          $('#notiftext').html(resultsJSON.text);
+
+    console.log(resultsJSON);
+
+  },
+  error: err => console.error(err)
+})
+
+
+
+  },
+  error: err => console.error(err)
+})
+
+
+$.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/notifications",
+  method: "GET",
+  encode: true,
+  processData: false,
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+
+
+    if (Array.isArray(resultsJSON)) {
+
+      resultsJSON.map(notification => {
+        var tempNotif = notification.message;
+
+        $.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/messages/" + tempNotif,
+  method: "GET",
+  encode: true,
+  processData: false,
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+
+    if (Array.isArray(resultsJSON)) {
+      
+    } else {
+
+    }
+    $('#modalBody').append('<div class="card" style="width: 18rem;"> ' +
+                      '<img class="card-img-top" src="../images/group.svg" style="height: 100px;" alt="Group image">' +
+                      '<div class="card-body">' +
+                        '<h5 class="card-title">' + resultsJSON.chat +'</h5>' +
+                        '<p class="card-text"> <b >'+ resultsJSON.sender +'</b>: <i>'+ resultsJSON.text +'</i></p>' +
+                        '<a href="#" class="btn btn-dark">Go to message</a>' +
+                      '</div>');
+
+
+    console.log(resultsJSON);
+    console.log('above this')
+
+  },
+  error: err => console.error(err)
+})
+      })
+    } else {
+        allNotifs[0] = resultsJSON.message;
+    }
+
+    console.log(resultsJSON);
+    console.log(notifs)
+
+
+
+  },
+  error: err => console.error(err)
+})
+
+$.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/messages",
+  method: "GET",
+  encode: true,
+  processData: false,
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+
+    $('#messages').html('');
+
+    if (Array.isArray(resultsJSON)) {
+
+
+      resultsJSON.map(user => {
+        if(user.sender == 1){
+          $('#messages').append(' <div class="message"> <div class="text">' + user.text + '</div> </div>');
+        }
+        else{
+          $('#messages').append(' <div class="recieved message"> <div class="text">' + user.text + '</div> </div>');
+        }
+      })
+    } else {
+      $('#messages').html(resultsJSON);
+    }
+
+    console.log(resultsJSON);
+
+  },
+  error: err => console.error(err)
+})
+
+        //Get group 1 messages
+        $('#group1').on('click', function () {
+
+$.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/messages/group/1",
+  method: "GET",
+  encode: true,
+  processData: false,
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+
+    $('#messages').html('');
+
+    if (Array.isArray(resultsJSON)) {
+
+
+      resultsJSON.map(user => {
+        if(user.sender == 1){
+          $('#messages').append(' <div class="message"> <div class="text">' + user.text + '</div> </div>');
+        }
+        else{
+          $('#messages').append(' <div class="recieved message"> <div class="text">' + user.text + '</div> </div>');
+        }
+      })
+    } else {
+      $('#messages').html(resultsJSON);
+    }
+
+    console.log(resultsJSON);
+    currentGroup = 1;
+  },
+  error: err => console.error(err)
+})
+});
+
+    //Get group 2 messages
+    $('#group2').on('click', function () {
+
+      $.ajax({
+        url: "https://normalgroup.tk/chatPage/myapi1/messages/group/2",
+        method: "GET",
+        encode: true,
+        processData: false,
+        headers: {
+          'Content-Type': "application/json"
+        },
+        success: (resultsJSON) => {
+
+          $('#messages').html('');
+
+          if (Array.isArray(resultsJSON)) {
+
+
+            resultsJSON.map(user => {
+              if(user.sender == 1){
+                $('#messages').append(' <div class="message"> <div class="text">' + user.text + '</div> </div>');
+              }
+              else{
+                $('#messages').append(' <div class="recieved message"> <div class="text">' + user.text + '</div> </div>');
+              }
+            })
+          } else {
+            $('#messages').html(resultsJSON);
+          }
+
+          console.log(resultsJSON);
+          currentGroup = 2;
+        },
+        error: err => console.error(err)
+      })
+    });
+
+        //Get group 3 messages
+        $('#group3').on('click', function () {
+
+$.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/messages/group/3",
+  method: "GET",
+  encode: true,
+  processData: false,
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+
+    $('#messages').html('');
+
+    if (Array.isArray(resultsJSON)) {
+
+
+      resultsJSON.map(user => {
+        if(user.sender == 1){
+          $('#messages').append(' <div class="message"> <div class="text">' + user.text + '</div> </div>');
+        }
+        else{
+          $('#messages').append(' <div class="recieved message"> <div class="text">' + user.text + '</div> </div>');
+        }
+      })
+    } else {
+      $('#messages').html(resultsJSON);
+    }
+
+    console.log(resultsJSON);
+    currentGroup = 3;
+  },
+  error: err => console.error(err)
+})
+});
+
+    //Get group 4 messages
+    $('#group4').on('click', function () {
+
+$.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/messages/group/4",
+  method: "GET",
+  encode: true,
+  processData: false,
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+
+    $('#messages').html('');
+
+    if (Array.isArray(resultsJSON)) {
+
+
+      resultsJSON.map(user => {
+        if(user.sender == 1){
+          $('#messages').append(' <div class="message"> <div class="text">' + user.text + '</div> </div>');
+        }
+        else{
+          $('#messages').append(' <div class="recieved message"> <div class="text">' + user.text + '</div> </div>');
+        }
+      })
+    } else {
+      $('#messages').html(resultsJSON);
+    }
+
+    console.log(resultsJSON);
+    currentGroup = 4;
+  },
+  error: err => console.error(err)
+})
+});
+
+
+$('#dummy').on('click', function () {
+
+$.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/messages",
+  method: "POST",
+  encode: true,
+  data: JSON.stringify( { "sender": 2, "chat": currentGroup, "text": "dummy message" } ),
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+    alert("message saved");
+
+  },
+  error: err => console.error(err)
+})
+});
+
+$('#submit').on('click', function () {
+
+$.ajax({
+  url: "https://normalgroup.tk/chatPage/myapi1/messages",
+  method: "POST",
+  encode: true,
+  data: JSON.stringify( { "sender": 1, "chat": currentGroup, "text": $('#message').val() } ),
+  headers: {
+    'Content-Type': "application/json",
+  },
+  success: (resultsJSON) => {
+    alert("message saved");
+
+  },
+  error: err => console.error(err)
+})
+});
+    
+
+  </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="../js/popper.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/message.js"> </script>
+
   </body>
 </html>
